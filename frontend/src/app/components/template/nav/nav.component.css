@@ -1,0 +1,19 @@
+.nav {
+    background-color: black;
+    margin-top: 62px;
+    width: 200px;
+}
+
+.nav a {
+    color: white;
+}
+
+.nav i {
+    padding-right: 10px;
+}
+
+.content {
+    background-color: white;
+    color: black;
+    padding: 16px;
+}

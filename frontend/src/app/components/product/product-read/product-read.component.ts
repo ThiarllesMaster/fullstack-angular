@@ -3,7 +3,7 @@ import { Product } from '../product.model';
 import { ProductService } from '../product.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTable } from '@angular/material/table';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { ProductDataSource } from './ProductDataSource';
 
 @Component({
@@ -19,7 +19,7 @@ export class ProductReadComponent implements AfterViewInit,OnInit {
   sort: MatSort;
   @ViewChild(MatTable)
   table: MatTable<Product>;
-  dataSource: ProductDataSource;
+  dataSource = new MatTableDataSource<Product>()
 
   products:Product[]
 
@@ -28,11 +28,10 @@ export class ProductReadComponent implements AfterViewInit,OnInit {
   constructor(private productService:ProductService) { }
 
   ngOnInit(): void {
-  this.productService.readProducts().subscribe(products => {
+    this.productService.readProducts().subscribe(products => {
       this.products = products
-      console.log(products)
-    }) 
-    this.dataSource = new ProductDataSource(this.productService)
+      this.dataSource.data = this.products
+    })
   }
 
   ngAfterViewInit() {
@@ -40,5 +39,4 @@ export class ProductReadComponent implements AfterViewInit,OnInit {
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
   }
-
 }

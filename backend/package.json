@@ -8,8 +8,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "json-server": "^0.16.1"
-  }
+  },
+  "description": ""
 }
